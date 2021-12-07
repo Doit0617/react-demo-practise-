@@ -4,7 +4,6 @@ import * as Mock from 'mockjs';
 export interface IBoardfake {
     list:
     {
-
         id: string
         title: string
         data: string
@@ -31,3 +30,33 @@ export function BoardFakeData() {
                 }]
         });;
 }
+
+
+export interface IProjectData {
+    list: [
+        {
+            id: number,
+            projectName: string,
+            teacher: string,
+            score: number,
+            state: string
+            other: string
+        }]
+
+}
+
+export const projectData: IProjectData = Mock.mock(
+    {
+        'list|100': [
+            {
+                id: '@increment',
+                projectName: '@cword(2,10)',
+                teacher: '@cword(2,3)',
+                score: '@integer(1,100)',
+                'state|1': ['未开始', '进行中', '已结束'],
+                other: "详情",
+            }]
+    });
+
+
+

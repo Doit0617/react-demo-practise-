@@ -34,7 +34,6 @@ ReactDOM.render(
                                 }
                                 return <route.component/>
                             }}
-
                         />
                     ))}
                 </Switch>

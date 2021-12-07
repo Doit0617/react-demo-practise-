@@ -6,7 +6,7 @@ const { Header, Sider, Content, Footer } = Layout;
 interface IConponents {
     header: JSX.Element;
     silder: JSX.Element;
-    children: React.ReactNode
+    children: JSX.Element;
 }
 
 export function GlobalLayout(conponent: IConponents) {

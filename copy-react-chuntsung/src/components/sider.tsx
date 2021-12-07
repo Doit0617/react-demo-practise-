@@ -21,10 +21,10 @@ export function Sider() {
                 <SubMenu key="Process-mana" title={
                     <span>
                         <ScheduleOutlined />
-                        <span>流程管理</span>
+                        <span>课程管理</span>
                     </span>}>
                     <Menu.Item key="process1">
-                        课题列表
+                        <Link to='/projectList'>课题列表</Link>
                     </Menu.Item>
                     <Menu.Item key="process2">
                         我的课程
