@@ -4,6 +4,7 @@ import { DashboardOutlined, ScheduleOutlined, TeamOutlined, ProfileOutlined } fr
 import { Link } from "react-router-dom";
 const { SubMenu } = Menu;
 export function Sider() {
+    { console.log('sider') }
     return (
         <>
             <Menu mode='inline' defaultOpenKeys={['admin-panel']} defaultSelectedKeys={['admin-panel1']} >
@@ -27,7 +28,7 @@ export function Sider() {
                         <Link to='/projectList'>课题列表</Link>
                     </Menu.Item>
                     <Menu.Item key="process2">
-                        我的课程
+                        <Link to='/myproject'>我的课程</Link>
                     </Menu.Item>
                     <Menu.Item key="process3">
                         我的报名

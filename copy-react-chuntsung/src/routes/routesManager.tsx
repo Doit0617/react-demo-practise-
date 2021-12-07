@@ -2,18 +2,16 @@
     路由管理
 */
 
-import { type } from "os";
-import { projectData } from "../common/fakeData";
 import { DashBoard } from "../components/dashBoard";
+import { MyProject, MyProject1 } from "../components/myproject";
 import { ProjectList } from "../components/projectTable";
-import { TableTest } from "../components/test";
 
 
 interface IRoute {
     path: string | routePath;
     component: JSX.Element | any;
 }
-type routePath = '/' | '/dashboard' | '/projectList'
+type routePath = '/' | '/dashboard' | '/projectList' | '/myproject'
 export const routes: IRoute[] =
     [
         {
@@ -27,6 +25,10 @@ export const routes: IRoute[] =
         {
             path: '/projectList',
             component: GetComponent('/projectList'),
+        },
+        {
+            path: '/myproject',
+            component: GetComponent('/myproject'),
         }
     ]
 
@@ -37,6 +39,9 @@ export function GetComponent(params: routePath | string) {
             return <DashBoard />
         case '/projectList':
             return <ProjectList />
+        case '/myproject':
+            return <MyProject />
+        // return <MyProject1 />
     }
     return <DashBoard />;
 }
