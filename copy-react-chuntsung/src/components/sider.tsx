@@ -1,53 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from 'antd';
 import { DashboardOutlined, ScheduleOutlined, TeamOutlined, ProfileOutlined } from '@ant-design/icons';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { loadavg } from "os";
+import Path from "../routes/routePath";
+import MenuItem from "antd/lib/menu/MenuItem";
 const { SubMenu } = Menu;
+
 export function Sider() {
-    { console.log('sider') }
+    const location = useLocation();
+    const [openKey, setOpenKey] = useState(['admin']);
+    console.log(openKey);
     return (
         <>
-            <Menu mode='inline' defaultOpenKeys={['admin-panel']} defaultSelectedKeys={['admin-panel1']} >
+            <Menu mode='inline' openKeys={openKey} selectedKeys={[location.pathname]} onOpenChange={
+                (e) => { setOpenKey(e);}
+            } >
 
-                <SubMenu key="admin-panel" title={
+                <SubMenu key={MenuOpenKey.admin} title={
                     <span>
                         <DashboardOutlined />
                         <span>管理面板</span>
                     </span>}>
-                    <Menu.Item key={'admin-panel1'} >
-                        <Link to="/dashboard">我的主页</Link>
+                    <Menu.Item key={Path.dashboard}>
+                        <Link to={Path.dashboard} >我的主页</Link>
                     </Menu.Item>
+
                 </SubMenu>
 
-                <SubMenu key="Process-mana" title={
+                <SubMenu key={MenuOpenKey.process} title={
                     <span>
                         <ScheduleOutlined />
                         <span>课程管理</span>
-                    </span>}>
-                    <Menu.Item key="process1">
-                        <Link to='/projectList'>课题列表</Link>
+                    </span>} >
+                    <Menu.Item key={Path.projectList}>
+                        <Link to={Path.projectList}>课题列表</Link>
                     </Menu.Item>
-                    <Menu.Item key="process2">
-                        <Link to='/myproject'>我的课程</Link>
-                    </Menu.Item>
-                    <Menu.Item key="process3">
-                        我的报名
-                    </Menu.Item>
-                    <Menu.Item key="process4">
-                        我的活动
+                    <Menu.Item key={Path.myproject}>
+                        <Link to={Path.myproject}>我的课程</Link>
                     </Menu.Item>
                 </SubMenu>
 
-                <SubMenu key="user-mana" title={<span>
-                    <TeamOutlined />
-                    <span>用户管理</span>
-                </span>}>
-                    <Menu.Item key="user1">
-                        导师列表
-                    </Menu.Item>
-                </SubMenu>
-
-                <SubMenu key="personal-info" title={
+                <SubMenu key={MenuOpenKey.personal} title={
                     <span>
                         <ProfileOutlined />
                         <span>个人信息</span>
@@ -60,4 +54,10 @@ export function Sider() {
         </>
     );
 
+}
+
+enum MenuOpenKey {
+    admin = "admin",
+    process = "process",
+    personal = 'personal',
 }

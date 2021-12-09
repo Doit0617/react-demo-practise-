@@ -35,6 +35,7 @@ export function BoardFakeData() {
 export interface IProjectData {
     list: [
         {
+            key: string
             id: number,
             projectName: string,
             teacher: string,
@@ -49,6 +50,7 @@ export const projectData: IProjectData = Mock.mock(
     {
         'list|100': [
             {
+                key: '@increment',
                 id: '@increment',
                 projectName: '@cword(2,10)',
                 teacher: '@cword(2,3)',

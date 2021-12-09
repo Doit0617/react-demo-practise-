@@ -5,6 +5,7 @@ import { Sider } from './components/sider';
 import { Header } from './components/header';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { GetComponent, routes } from './routes/routesManager';
+import 'antd/dist/antd.css';
 export function App() {
   const location = useLocation();
   return (

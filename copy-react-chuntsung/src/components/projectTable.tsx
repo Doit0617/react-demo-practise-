@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IProjectData, projectData } from "../common/fakeData";
 import { Button, Col, Row, Space, Table, Select, Badge, message } from 'antd';
 import { valueType } from "antd/lib/statistic/utils";
@@ -32,19 +32,24 @@ interface IProject {
 export function ProjectList() {
     const m_projectData: IProject = { data: projectData }
     const [m_list, setList] = useState(m_projectData);
-
+    const [loading, setLoading] = useState(true);
     const handleSelectState = (e: valueType) => {
 
         console.log(e);
         if (e === 'doing') {
 
-
-            // setList(a);
         }
     }
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+    }, [loading]);
+
     return (
         <div>
             <div>
+                
                 <Space align='center'>
                     <span style={{ fontSize: 16, minWidth: 40 }}>筛选</span>
                     <Select placeholder={'状态'} style={{ width: 240 }} onChange={handleSelectState} >
@@ -57,7 +62,7 @@ export function ProjectList() {
             </div>
             <Row>
                 <Col offset={1} span={20}>
-                    <Table dataSource={m_list.data.list} columns={colums} key="table" />
+                    <Table loading={loading} dataSource={m_list.data.list} columns={colums} key="table" />
                 </Col>
             </Row>
         </div>

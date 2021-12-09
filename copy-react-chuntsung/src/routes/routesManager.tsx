@@ -2,48 +2,49 @@
     路由管理
 */
 
+import { type } from "os";
 import { DashBoard } from "../components/dashBoard";
 import { MyProject, MyProject1 } from "../components/myproject";
 import { ProjectList } from "../components/projectTable";
+import Path from "./routePath";
 
 
 interface IRoute {
-    path: string | routePath;
+    path: string;
     component: JSX.Element | any;
 }
-type routePath = '/' | '/dashboard' | '/projectList' | '/myproject'
 export const routes: IRoute[] =
     [
         {
-            path: '/',
-            component: GetComponent('/')
+            path: Path.defaultPath,
+            component: GetComponent(Path.defaultPath)
         },
         {
-            path: '/dashboard',
-            component: GetComponent('/dashboard')
+            path: Path.dashboard,
+            component: GetComponent(Path.dashboard)
         },
         {
-            path: '/projectList',
-            component: GetComponent('/projectList'),
+            path: Path.projectList,
+            component: GetComponent(Path.projectList),
         },
         {
-            path: '/myproject',
-            component: GetComponent('/myproject'),
+            path: Path.myproject,
+            component: GetComponent(Path.myproject),
         }
     ]
 
-export function GetComponent(params: routePath | string) {
+export function GetComponent(params: string) {
     switch (params) {
-        case '/':
-        case '/dashboard':
+        case Path.defaultPath || Path.dashboard:
             return <DashBoard />
-        case '/projectList':
+        case Path.projectList:
             return <ProjectList />
-        case '/myproject':
+        case Path.myproject:
             return <MyProject />
-        // return <MyProject1 />
     }
     return <DashBoard />;
 }
+export const defaultPath = '/';
+
 
 
