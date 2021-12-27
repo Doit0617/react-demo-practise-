@@ -14,7 +14,7 @@ export function Sider() {
     return (
         <>
             <Menu mode='inline' openKeys={openKey} selectedKeys={[location.pathname]} onOpenChange={
-                (e) => { setOpenKey(e);}
+                (e) => { setOpenKey(e); }
             } >
 
                 <SubMenu key={MenuOpenKey.admin} title={
@@ -46,8 +46,8 @@ export function Sider() {
                         <ProfileOutlined />
                         <span>个人信息</span>
                     </span>}>
-                    <Menu.Item key='info1'>
-                        修改信息
+                    <Menu.Item key={Path.profile}>
+                        <Link to={Path.profile}>修改信息</Link>
                     </Menu.Item>
                 </SubMenu>
             </Menu>

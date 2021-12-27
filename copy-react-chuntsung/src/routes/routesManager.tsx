@@ -5,6 +5,7 @@
 import { type } from "os";
 import { DashBoard } from "../components/dashBoard";
 import { MyProject, MyProject1 } from "../components/myproject";
+import { UserProfile } from "../components/profile";
 import { ProjectList } from "../components/projectTable";
 import Path from "./routePath";
 
@@ -30,6 +31,10 @@ export const routes: IRoute[] =
         {
             path: Path.myproject,
             component: GetComponent(Path.myproject),
+        },
+        {
+            path: Path.profile,
+            component: GetComponent(Path.profile),
         }
     ]
 
@@ -41,6 +46,8 @@ export function GetComponent(params: string) {
             return <ProjectList />
         case Path.myproject:
             return <MyProject />
+        case Path.profile:
+            return <UserProfile />
     }
     return <DashBoard />;
 }
