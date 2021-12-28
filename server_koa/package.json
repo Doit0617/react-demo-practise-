@@ -5,8 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc --watch",
-    "start":"supervisor --watch out/ ./out/index.js"
-    
+    "start": "supervisor --watch out/ ./out/index.js"
   },
   "keywords": [],
   "author": "",

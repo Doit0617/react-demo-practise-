@@ -55,12 +55,10 @@ function query(sql, params) {
             return [2 /*return*/, new Promise(function (resolve, reject) {
                     connection.query(sql, params, function (err, res) {
                         if (err) {
-                            var ans = { code: '-1', data: { err: err } };
-                            reject(JSON.stringify(ans));
+                            reject(err);
                         }
                         else {
-                            var ans = { code: 0, data: res };
-                            resolve(JSON.stringify(ans));
+                            resolve(res);
                         }
                     });
                 })];

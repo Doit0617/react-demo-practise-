@@ -5,18 +5,23 @@ import 'antd/dist/antd.css';
 import DownOutlined from "@ant-design/icons/lib/icons/DownOutlined";
 import LogoutOutlined from "@ant-design/icons/lib/icons/LogoutOutlined";
 import { LoginModal } from "./loginModal";
+import Path from "../routes/routePath";
+import { Link } from "react-router-dom";
 
 interface ILogin {
     isVisible: boolean;
     isLogin: boolean;
     userName: string;
 }
+
+
+
 // 头文件
 export function Header(data: ILogin) {
     const [loginData, SetLoginData] = useState(data);
     const menu = (
         <Menu>
-            <Menu.Item key = "exit" icon={<LogoutOutlined />} onClick={() => {
+            <Menu.Item key="exit" icon={<LogoutOutlined />} onClick={() => {
                 message.info("退出登录")
                 let newData = { ...loginData };
                 newData.isLogin = false;
@@ -36,6 +41,8 @@ export function Header(data: ILogin) {
             SetLoginData(newData);
         }
         const handleReister = () => {
+            console.log("asdfewrwerew");
+
         }
         return (
             <>
@@ -43,7 +50,9 @@ export function Header(data: ILogin) {
                     <Row align={'middle'}>
                         <Space>
                             <Button type={'primary'} onClick={handleLogin}>登录</Button>
-                            <Button type={'primary'} onClick={handleReister}>注册</Button>
+                            <Button type={'primary'} onClick={handleReister}>
+                                <Link to={Path.register}>注册</Link>
+                            </Button>
                         </Space>
                     </Row>
                 </Col>

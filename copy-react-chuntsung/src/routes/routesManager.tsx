@@ -3,10 +3,12 @@
 */
 
 import { type } from "os";
+import { Register } from "../axios/axiosLogin";
 import { DashBoard } from "../components/dashBoard";
 import { MyProject, MyProject1 } from "../components/myproject";
 import { UserProfile } from "../components/profile";
 import { ProjectList } from "../components/projectTable";
+import { RegisterInfo } from "../components/registerInfo";
 import Path from "./routePath";
 
 
@@ -35,6 +37,10 @@ export const routes: IRoute[] =
         {
             path: Path.profile,
             component: GetComponent(Path.profile),
+        },
+        {
+            path: Path.register,
+            component: GetComponent(Path.register)
         }
     ]
 
@@ -48,6 +54,8 @@ export function GetComponent(params: string) {
             return <MyProject />
         case Path.profile:
             return <UserProfile />
+        case Path.register:
+            return <RegisterInfo />
     }
     return <DashBoard />;
 }

@@ -1,19 +1,9 @@
+import { configure } from "@testing-library/react";
 import React from "react";
-import axios from 'axios';
-
-
-interface INetData {
+import { instance } from "../common/axiosMnager";
+interface INetData<T> {
     code: number,
-    data: {},
-}
-const instance = axios.create({
-    baseURL: 'http://10.18.62.19:8000',
-    timeout: 1000,
-});
-
-export async function RequestTest() {
-    let ans = await instance.get('/user');
-    return ans.data;
+    data: T,
 }
 
 export async function Register() {
@@ -23,16 +13,13 @@ export async function Register() {
         console.log(respose);
     });
 }
-export async function Login(username: string, userpwd: string) {
+export async function Login<T>(username: string, userpwd: string) {
     var params = new URLSearchParams();
     params.append('username', username);
     params.append('userpwd', userpwd);
     return instance.post('/login', params).then((respose) => {
-        let ans: INetData = { code: 0, data: respose.data };
-        return ans;
+        let info = respose.data as INetData<T>;
+        console.log(info);
+        return info;
     });
 }
-
-
-
-

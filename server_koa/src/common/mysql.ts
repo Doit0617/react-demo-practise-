@@ -12,15 +12,13 @@ const connection = mysql.createConnection(
 connection.connect();
 
 
-export async function query(sql: string, params: string[]): Promise<string> {
+export async function query<T>(sql: string, params: string[]): Promise<T> {
     return new Promise((resolve, reject) => {
         connection.query(sql, params, (err, res) => {
             if (err) {
-                let ans = { code: '-1', data: { err } }
-                reject(JSON.stringify(ans));
+                reject(err);
             } else {
-                let ans = { code: 0, data: res }
-                resolve(JSON.stringify(ans));
+                resolve(res);
             }
         });
     });

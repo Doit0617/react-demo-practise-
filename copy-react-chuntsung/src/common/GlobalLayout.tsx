@@ -5,7 +5,7 @@ const { Header, Sider, Content, Footer } = Layout;
 
 interface IConponents {
     header: JSX.Element;
-    silder: JSX.Element;
+    silder: JSX.Element | null;
     children: JSX.Element;
 }
 
@@ -15,7 +15,7 @@ export function GlobalLayout(conponent: IConponents) {
             <Layout>
                 <Header className="light">{conponent.header}</Header>
                 <Layout>
-                    <Sider>{conponent.silder}</Sider>
+                    {/* <Sider>{conponent.silder}</Sider> */}
                     <Content className="content">{conponent.children}</Content>
                 </Layout>
                 <Footer>Footer</Footer>

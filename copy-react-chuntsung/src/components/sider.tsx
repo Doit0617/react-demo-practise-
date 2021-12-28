@@ -10,7 +10,6 @@ const { SubMenu } = Menu;
 export function Sider() {
     const location = useLocation();
     const [openKey, setOpenKey] = useState(['admin']);
-    console.log(openKey);
     return (
         <>
             <Menu mode='inline' openKeys={openKey} selectedKeys={[location.pathname]} onOpenChange={

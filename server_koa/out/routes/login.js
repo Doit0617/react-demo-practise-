@@ -60,7 +60,7 @@ router.post('/register', function (ctx, next) { return __awaiter(void 0, void 0,
     });
 }); });
 router.post('/login', function (ctx, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var userName, userPwd, ans;
+    var userName, userPwd, ans, m_code, res;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -69,7 +69,29 @@ router.post('/login', function (ctx, next) { return __awaiter(void 0, void 0, vo
                 return [4 /*yield*/, Login(userName, userPwd)];
             case 1:
                 ans = _a.sent();
-                ctx.body = ans;
+                m_code = Object.keys(ans).length === 0 ? -1 : 0;
+                res = {
+                    code: m_code,
+                    data: ans,
+                };
+                ctx.body = res;
+                return [2 /*return*/];
+        }
+    });
+}); });
+router.get('/test', function (ctx, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var ans, m_code, res;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Login('1', '123')];
+            case 1:
+                ans = _a.sent();
+                m_code = Object.keys(ans).length === 0 ? -1 : 0;
+                res = {
+                    code: m_code,
+                    data: ans,
+                };
+                ctx.body = res;
                 return [2 /*return*/];
         }
     });
