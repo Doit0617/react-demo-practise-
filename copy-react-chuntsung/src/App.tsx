@@ -19,13 +19,10 @@ export function App() {
           <Route path={route.path} key={idx} element={route.component} />
         })}
       </Routes>
-      {/* <LoginComponent /> */}
 
       <GlobalLayout
         header={<Header isLogin={false} userName="" isVisible={false} />}
-        silder={
-          <Sider />
-        }
+        silder={<Sider />}
         children={GetComponent(location.pathname)}
       />
     </>
